@@ -6,6 +6,7 @@
     <title>Эрудит king school 1+1</title>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="1.png">
     <style>
         /* Основные стили */
         * {
@@ -708,11 +709,12 @@
             .welcome button {
                 order: 4;
                 margin: 10px auto;
-            }
-            
-            /* Плавающая кнопка для мобильной версии */
-            .floating-button {
-                display: block;
+                position: fixed;
+                bottom: 30px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 99;
+                box-shadow: 0 5px 20px rgba(156, 77, 204, 0.3);
             }
             
             .apply {
@@ -803,11 +805,6 @@
             <a href="#express">Экспресс-курсы</a>
         </div>
     </header>
-
-    <!-- Плавающая кнопка -->
-    <button class="floating-button" onclick="scrollToSection('application')">
-        Записаться на занятия
-    </button>
 
     <!-- WELCOME BLOCK -->
     <section class="block" id="welcome">
@@ -1068,25 +1065,27 @@
             this.reset();
         });
 
-        // Прокрутка наверх при загрузке страницы
-        document.addEventListener('DOMContentLoaded', function() {
-            window.scrollTo(0, 0);
-        });
-
-        // Управление плавающей кнопкой - скрывать на футере
+        // Управление кнопкой - скрывать на футере
         window.addEventListener('scroll', function() {
-            const floatingButton = document.querySelector('.floating-button');
+            const welcomeButton = document.querySelector('.welcome button');
             const footer = document.querySelector('.footer');
             const footerRect = footer.getBoundingClientRect();
             
             // Если футер виден в области просмотра, скрываем кнопку
-            if (footerRect.top < window.innerHeight) {
-                floatingButton.style.display = 'none';
-            } else {
-                floatingButton.style.display = 'block';
+            if (footerRect.top < window.innerHeight && window.innerWidth <= 968) {
+                welcomeButton.style.display = 'none';
+            } else if (window.innerWidth <= 968) {
+                welcomeButton.style.display = 'block';
             }
+        });
+
+        // Убираем хэш из URL при загрузке чтобы открывалась главная страница
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                history.replaceState(null, null, ' ');
+            }
+            window.scrollTo(0, 0);
         });
     </script>
 </body>
 </html>
-
