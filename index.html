@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/png" href="1.png">
     <style>
-        /* Основные стили */
         * {
             margin: 0;
             padding: 0;
@@ -33,7 +32,6 @@
             cursor: pointer;
         }
 
-        /* ======== HEADER ======== */
         .header {
             position: fixed;
             top: 0;
@@ -139,7 +137,6 @@
             background-color: rgba(255, 255, 255, 0.1);
         }
 
-        /* ======== BLOCKS ======== */
         .block {
             padding: 20px 10% 100px;
             min-height: 100vh;
@@ -149,14 +146,12 @@
             position: relative;
         }
 
-        /* ======== WELCOME BLOCK ======== */
         .welcome {
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 40px;
             min-height: 100vh;
-            position: relative;
         }
 
         .welcome .text {
@@ -213,12 +208,12 @@
             background: #9c4dcc;
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 12px 25px;
             border-radius: 25px;
             cursor: pointer;
             transition: 0.3s;
             font-family: 'Comfortaa';
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 600;
             position: absolute;
             bottom: 40px;
@@ -228,6 +223,37 @@
 
         .welcome-button:hover {
             transform: scale(1.05);
+            background: #8a3cb8;
+        }
+
+        .floating-button {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #9c4dcc;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Comfortaa';
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 99;
+            box-shadow: 0 5px 20px rgba(156, 77, 204, 0.3);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .floating-button.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .floating-button:hover {
+            transform: translateX(-50%) scale(1.05);
             background: #8a3cb8;
         }
 
@@ -249,39 +275,6 @@
             display: none;
         }
 
-        /* ======== FLOATING BUTTON ======== */
-        .floating-button {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #9c4dcc;
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Comfortaa';
-            font-size: 16px;
-            font-weight: 600;
-            z-index: 99;
-            box-shadow: 0 5px 20px rgba(156, 77, 204, 0.3);
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .floating-button.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .floating-button:hover {
-            transform: translateX(-50%) scale(1.05);
-            background: #8a3cb8;
-        }
-
-        /* ======== WHY BLOCK ======== */
         .why-block {
             background: #f8f4ff;
         }
@@ -351,7 +344,6 @@
             margin-right: auto;
         }
 
-        /* ======== HELP BLOCK ======== */
         .help-block {
             background: white;
         }
@@ -400,7 +392,6 @@
             align-self: flex-end;
         }
 
-        /* ======== COLORS ======== */
         .color1 { background: #ffe0e0; }
         .color2 { background: #e0f0ff; }
         .color3 { background: #e7e0ff; }
@@ -420,7 +411,6 @@
             margin-right: auto;
         }
 
-        /* ======== APPLICATION BLOCK ======== */
         .apply-block {
             background: white;
         }
@@ -501,7 +491,6 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        /* ======== DIRECTIONS BLOCK ======== */
         .directions-block {
             background: #f8f4ff;
         }
@@ -550,7 +539,6 @@
             border-radius: 10px;
         }
 
-        /* ======== PRICING BLOCK ======== */
         .pricing-block {
             background: white;
         }
@@ -591,7 +579,6 @@
             line-height: 1.5;
         }
 
-        /* ======== EXPRESS COURSES BLOCK ======== */
         .express-block {
             background: #f8f4ff;
         }
@@ -628,7 +615,6 @@
             line-height: 1.5;
         }
 
-        /* ======== FOOTER ======== */
         .footer {
             background: #f0e6ff;
             padding: 40px 20px;
@@ -653,7 +639,6 @@
             color: #9c4dcc;
         }
 
-        /* ======== RESPONSIVE ======== */
         @media (max-width: 968px) {
             .header {
                 position: relative;
@@ -662,7 +647,7 @@
             }
             
             .block {
-                padding: 40px 10% 100px;
+                padding: 20px 10% 80px;
             }
             
             .header-title {
@@ -676,8 +661,9 @@
             .welcome {
                 flex-direction: column;
                 text-align: center;
-                gap: 20px;
+                gap: 15px;
                 min-height: auto;
+                margin-top: 0;
             }
             
             .welcome .text, .image {
@@ -696,12 +682,12 @@
             .mobile-image-container {
                 display: block;
                 order: 2;
-                margin: 20px 0;
+                margin: 15px 0;
             }
             
             .mobile-image-container img {
                 width: 100%;
-                max-width: 300px;
+                max-width: 280px;
                 border-radius: 15px;
                 margin: 0 auto;
                 display: block;
@@ -710,13 +696,13 @@
             .welcome p {
                 font-size: 16px;
                 text-align: center;
-                margin: 15px 0;
+                margin: 12px 0;
                 order: 3;
             }
             
             .welcome-button {
                 position: fixed;
-                bottom: 30px;
+                bottom: 20px;
                 left: 50%;
                 transform: translateX(-50%);
                 z-index: 99;
@@ -786,7 +772,6 @@
     </style>
 </head>
 <body>
-    <!-- HEADER -->
     <header class="header">
         <div class="header-content">
             <img src="1.png" alt="Логотип" onclick="scrollToSection('welcome')">
@@ -817,7 +802,6 @@
         </div>
     </header>
 
-    <!-- WELCOME BLOCK -->
     <section class="block" id="welcome">
         <div class="welcome">
             <div class="text">
@@ -828,7 +812,6 @@
                     <span class="school-plus">1 + 1</span>
                 </h2>
                 
-                <!-- Контейнер для мобильного изображения -->
                 <div class="mobile-image-container">
                     <img src="2.png" alt="Эрудит King School">
                 </div>
@@ -842,10 +825,8 @@
         </div>
     </section>
 
-    <!-- FLOATING BUTTON -->
     <button class="floating-button" onclick="scrollToSection('application')">Записаться на занятия</button>
 
-    <!-- WHY BLOCK -->
     <section class="block why-block" id="why-us">
         <h2 class="block-title">Почему нас выбирают?</h2>
         <div class="cards3">
@@ -868,7 +849,6 @@
         <p class="why-text">Наши преподаватели — мотивированные, внимательные специалисты, умеющие работать с детьми любого возраста и уровня подготовки.</p>
     </section>
 
-    <!-- HELP BLOCK -->
     <section class="block help-block" id="help">
         <h2 class="block-title">Чем мы можем помочь?</h2>
         <div class="grid6">
@@ -900,7 +880,6 @@
         <p class="help-text">Пока ваш ребёнок развивается под руководством заботливых педагогов — у вас появляется время для себя!</p>
     </section>
 
-    <!-- APPLICATION BLOCK -->
     <section class="block apply-block" id="application">
         <div class="apply">
             <div class="apply-content">
@@ -918,7 +897,6 @@
         </div>
     </section>
 
-    <!-- DIRECTIONS BLOCK -->
     <section class="block directions-block" id="directions">
         <h2 class="block-title">Направления обучения🎓</h2>
         <div class="directions-grid">
@@ -949,7 +927,6 @@
         </div>
     </section>
 
-    <!-- PRICING BLOCK -->
     <section class="block pricing-block" id="pricing">
         <h2 class="block-title">Стоимость занятий</h2>
         <div class="pricing-cards">
@@ -973,7 +950,6 @@
         </div>
     </section>
 
-    <!-- EXPRESS COURSES BLOCK -->
     <section class="block express-block" id="express">
         <h2 class="block-title">⚡️ Экспресс-курсы</h2>
         <div class="express-grid">
@@ -1015,7 +991,6 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <h3>Эрудит king school 1+1</h3>
         <div class="footer-contacts">
@@ -1027,13 +1002,11 @@
     </footer>
 
     <script>
-        // Бургер-меню
         document.getElementById('burgerMenu').addEventListener('click', function() {
             const dropdown = document.getElementById('dropdownMenu');
             dropdown.style.display = dropdown.style.display === 'flex' ? 'none' : 'flex';
         });
 
-        // Закрытие меню при клике вне его
         document.addEventListener('click', function(event) {
             const burgerMenu = document.getElementById('burgerMenu');
             const dropdownMenu = document.getElementById('dropdownMenu');
@@ -1043,17 +1016,14 @@
             }
         });
 
-        // Плавная прокрутка
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({
                 behavior: 'smooth'
             });
         }
 
-        // Прокрутка к конкретной карточке стоимости
         function scrollToPrice(cardType) {
             scrollToSection('pricing');
-            // Небольшая задержка для анимации прокрутки
             setTimeout(() => {
                 const card = document.getElementById(cardType + '-card');
                 if (card) {
@@ -1061,7 +1031,6 @@
                         behavior: 'smooth',
                         block: 'center'
                     });
-                    // Добавляем подсветку карточки
                     card.style.transform = 'scale(1.05)';
                     card.style.boxShadow = '0 10px 30px rgba(156, 77, 204, 0.3)';
                     setTimeout(() => {
@@ -1072,21 +1041,18 @@
             }, 800);
         }
 
-        // Отправка формы
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert('Заявка отправлена на почту kuvshinka1910@mail.ru!');
             this.reset();
         });
 
-        // Управление кнопками - переключение между обычной и плавающей
         window.addEventListener('scroll', function() {
             const welcomeButton = document.querySelector('.welcome-button');
             const floatingButton = document.querySelector('.floating-button');
             const welcomeSection = document.getElementById('welcome');
             const welcomeRect = welcomeSection.getBoundingClientRect();
             
-            // Если пользователь прокрутил ниже welcome-секции, показываем плавающую кнопку
             if (welcomeRect.bottom < 0) {
                 floatingButton.classList.add('visible');
                 if (window.innerWidth <= 968) {
@@ -1099,7 +1065,6 @@
                 }
             }
             
-            // Скрываем кнопку при приближении к футеру
             const footer = document.querySelector('.footer');
             const footerRect = footer.getBoundingClientRect();
             
@@ -1118,4 +1083,3 @@
     </script>
 </body>
 </html>
-
