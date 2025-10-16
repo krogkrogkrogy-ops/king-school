@@ -245,7 +245,6 @@
             border-radius: 20px;
         }
 
-        /* Мобильное изображение - скрыто по умолчанию */
         .mobile-image-container {
             display: none;
         }
@@ -690,12 +689,10 @@
                 text-align: center;
             }
             
-            /* Скрыть основное изображение на мобильных */
             .image {
                 display: none;
             }
             
-            /* Показать мобильное изображение между названием и текстом */
             .mobile-image-container {
                 display: block;
                 order: 2;
@@ -1112,7 +1109,6 @@
             }
         });
 
-        // Убираем хэш из URL при загрузке чтобы открывалась главная страница
         window.addEventListener('load', function() {
             if (window.location.hash) {
                 history.replaceState(null, null, ' ');
@@ -1122,3 +1118,4 @@
     </script>
 </body>
 </html>
+
