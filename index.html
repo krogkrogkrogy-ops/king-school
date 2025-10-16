@@ -156,6 +156,7 @@
             justify-content: space-between;
             gap: 40px;
             min-height: 100vh;
+            position: relative;
         }
 
         .welcome .text {
@@ -208,7 +209,7 @@
             color: #666;
         }
 
-        .welcome button {
+        .welcome-button {
             background: #9c4dcc;
             color: white;
             border: none;
@@ -219,9 +220,13 @@
             font-family: 'Comfortaa';
             font-size: 16px;
             font-weight: 600;
+            position: absolute;
+            bottom: 40px;
+            left: 10%;
+            z-index: 10;
         }
 
-        .welcome button:hover {
+        .welcome-button:hover {
             transform: scale(1.05);
             background: #8a3cb8;
         }
@@ -247,7 +252,6 @@
 
         /* ======== FLOATING BUTTON ======== */
         .floating-button {
-            display: none;
             position: fixed;
             bottom: 30px;
             left: 50%;
@@ -264,6 +268,13 @@
             font-weight: 600;
             z-index: 99;
             box-shadow: 0 5px 20px rgba(156, 77, 204, 0.3);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .floating-button.visible {
+            opacity: 1;
+            visibility: visible;
         }
 
         .floating-button:hover {
@@ -706,15 +717,18 @@
                 order: 3;
             }
             
-            .welcome button {
-                order: 4;
-                margin: 10px auto;
+            .welcome-button {
                 position: fixed;
                 bottom: 30px;
                 left: 50%;
                 transform: translateX(-50%);
                 z-index: 99;
                 box-shadow: 0 5px 20px rgba(156, 77, 204, 0.3);
+                display: none;
+            }
+            
+            .floating-button {
+                display: block;
             }
             
             .apply {
@@ -823,13 +837,16 @@
                 </div>
                 
                 <p>Место, где ваш ребёнок учится с удовольствием, а знания приходят через любовь, игру и мотивацию!</p>
-                <button onclick="scrollToSection('application')">Записаться на занятия</button>
             </div>
             <div class="image">
                 <img src="2.png" alt="Эрудит King School">
             </div>
+            <button class="welcome-button" onclick="scrollToSection('application')">Записаться на занятия</button>
         </div>
     </section>
+
+    <!-- FLOATING BUTTON -->
+    <button class="floating-button" onclick="scrollToSection('application')">Записаться на занятия</button>
 
     <!-- WHY BLOCK -->
     <section class="block why-block" id="why-us">
@@ -1065,17 +1082,33 @@
             this.reset();
         });
 
-        // Управление кнопкой - скрывать на футере
+        // Управление кнопками - переключение между обычной и плавающей
         window.addEventListener('scroll', function() {
-            const welcomeButton = document.querySelector('.welcome button');
+            const welcomeButton = document.querySelector('.welcome-button');
+            const floatingButton = document.querySelector('.floating-button');
+            const welcomeSection = document.getElementById('welcome');
+            const welcomeRect = welcomeSection.getBoundingClientRect();
+            
+            // Если пользователь прокрутил ниже welcome-секции, показываем плавающую кнопку
+            if (welcomeRect.bottom < 0) {
+                floatingButton.classList.add('visible');
+                if (window.innerWidth <= 968) {
+                    welcomeButton.style.display = 'none';
+                }
+            } else {
+                floatingButton.classList.remove('visible');
+                if (window.innerWidth <= 968) {
+                    welcomeButton.style.display = 'block';
+                }
+            }
+            
+            // Скрываем кнопку при приближении к футеру
             const footer = document.querySelector('.footer');
             const footerRect = footer.getBoundingClientRect();
             
-            // Если футер виден в области просмотра, скрываем кнопку
             if (footerRect.top < window.innerHeight && window.innerWidth <= 968) {
                 welcomeButton.style.display = 'none';
-            } else if (window.innerWidth <= 968) {
-                welcomeButton.style.display = 'block';
+                floatingButton.classList.remove('visible');
             }
         });
 
